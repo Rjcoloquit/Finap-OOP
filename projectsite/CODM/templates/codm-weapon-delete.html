@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete CODM Weapon - CODM Master {% endblock %}
+
+{% block navbar %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'codm-player-list' %}">Players</a>
+    <a href="{% url 'codm-weapon-list' %}">Weapons</a>
+    <a href="{% url 'about-us' %}">About Us</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <h2>Delete CODM Weapon</h2>
+  <form method="post" action="{% url 'codm-weapon-delete' weapon.id %}">
+    {% csrf_token %}
+    <div class="form-row">
+      <p>Are you sure you want to delete "{{ weapon }}"?</p>
+      {% include 'includes/form.html' %}
+    </div>
+    <input class="col-md-4 btn btn-primary" type="submit" value="Confirm">
+  </form>
+{% endblock %}

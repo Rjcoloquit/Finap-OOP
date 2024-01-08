@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} CODM Weapons - CODM Master {% endblock %}
+
+{% block navbar %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'codm-player-list' %}">Players</a>
+    <a href="{% url 'codm-weapon-list' %}">Weapons</a>
+    <a href="{% url 'about-us' %}">About Us</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div>
+  <h2>Call of Duty Mobile Weapons</h2>
+  {% if weapons %}
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Damage</th>
+          <th>Fire Rate</th>
+          <th>Ammo Capacity</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for weapon in weapons %}
+          <tr>
+            <td>{{ weapon.name }}</td>
+            <td>{{ weapon.damage }}</td>
+            <td>{{ weapon.fire_rate }}</td>
+            <td>{{ weapon.ammo_capacity}}</td>
+            <td>{{ weapon.weapon_type }}</td>
+              <td>
+                <a href="{% url 'codm-weapon-edit' weapon.id %}">Edit</a> |
+                <a href="{% url 'codm-weapon-delete' weapon.id %}">Delete</a>
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No weapons available.</p>
+  {% endif %}
+  <a href="{% url 'codm-weapon-add' %}" class="btn btn-outline-primary">Add a CODM Weapon</a>
+</div>
+  <br>
+<div>
+    {% include 'includes/pagination.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Add CODM Player - CODM Master {% endblock %}
+
+{% block navbar %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'codm-player-list' %}">Players</a>
+    <a href="{% url 'codm-weapon-list' %}">Weapons</a>
+    <a href="{% url 'about-us' %}">About Us</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <form role="form" class="" action="{% url 'codm-player-add' %}" method="post" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+
+    </form>
+{% endblock %}

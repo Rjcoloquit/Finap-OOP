@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} About Us - CODM Master {% endblock %}
+
+{% block navbar %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'codm-player-list' %}">Players</a>
+    <a href="{% url 'codm-weapon-list' %}">Weapons</a>
+    <a href="{% url 'about-us' %}">About Us</a> 
+</nav>
+{% endblock %}
+{% block content %}
+  <div id="content-container">
+    <h2>About Us</h2>
+
+    <p>Welcome to CODM Master, your ultimate resource for Call of Duty Mobile information. Our platform is dedicated to providing comprehensive details about CODM players, weapons, and more.</p>
+
+    <p>At CODM Master, we strive to deliver accurate and up-to-date content to enhance your gaming experience. Whether you're a seasoned player or a newcomer, you'll find valuable insights and tips to elevate your skills in Call of Duty Mobile.</p>
+
+    <p>Feel free to explore our website, check out the latest player profiles, weapon statistics, and stay tuned for exciting updates. If you have any questions or suggestions, don't hesitate to reach out to us.</p>
+
+    <p>Thank you for choosing CODM Master as your go-to resource for all things Call of Duty Mobile!</p>
+  </div>
+{% endblock %}

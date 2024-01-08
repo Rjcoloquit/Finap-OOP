@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} CODM Players - CODM Master {% endblock %}
+
+{% block navbar %}
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'codm-player-list' %}">Players</a>
+    <a href="{% url 'codm-weapon-list' %}">Weapons</a>
+    <a href="{% url 'about-us' %}">About Us</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div>
+  <h2>Call of Duty Mobile Players</h2>
+  {% if players %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Level</th>
+                <th>Rank</th>
+                <th>Action</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.username }}</td>
+                    <td>{{ player.level }}</td>
+                    <td>{{ player.rank }}</td>
+                    <td>
+                        <a href="{% url 'codm-player-edit' player.id %}">Edit</a> |
+                        <a href="{% url 'codm-player-delete' player.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% else %}
+    <p>No players found.</p>
+  {% endif %}
+  <a href="{% url 'codm-player-add' %}" class="btn btn-outline-primary">Add a CODM Player</a>
+</div>
+<br>
+<div>
+    {% include 'includes/pagination.html' %}
+</div>
+{% endblock %}
